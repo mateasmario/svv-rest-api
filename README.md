@@ -148,7 +148,7 @@ public class StepDefinitions {
 
 The step definiton will contain all of the API requests, together with required assertions.
 
-### The runner class
+#### The runner class
 
 The step definition class is not runnable. Cucumber requires a special annotated class to run the step definitions.
 
