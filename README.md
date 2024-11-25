@@ -91,7 +91,7 @@ Assertions.assertEquals(200, response.getStatusCode());
 #### 3. Sending POST requests (with Authorization header and JWT token)
 
 ````java
-String BASE_URL = "BASE URL GOES HERE"";
+String BASE_URL = "BASE URL GOES HERE";
 
 RestAssured.baseURI = BASE_URL;
 RequestSpecification requestSpecification = RestAssured.given();
