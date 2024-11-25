@@ -4,7 +4,7 @@
 
 We will first need to add the required dependencies for the [RestAssured](https://rest-assured.io/) library, including [jackson-databind](https://github.com/FasterXML/jackson-databind) for proper JSON object mapping.
 
-````
+````xml
 <dependency>
     <groupId>io.rest-assured</groupId>
     <artifactId>rest-assured</artifactId>
@@ -20,7 +20,7 @@ We will first need to add the required dependencies for the [RestAssured](https:
 
 [Cucumber](https://cucumber.io/docs/cucumber/) requires the following dependencies:
 
-````
+````xml
 <dependency>
     <groupId>io.cucumber</groupId>
     <artifactId>cucumber-java</artifactId>
@@ -34,7 +34,7 @@ We will first need to add the required dependencies for the [RestAssured](https:
 </dependency>
 ````
 We also need to add a dependency for the JUnit API, which provides the `Assertions` class:
-````
+````xml
 <dependency>
     <groupId>org.junit.jupiter</groupId>
     <artifactId>junit-jupiter-api</artifactId>
@@ -51,7 +51,7 @@ For the below example, we will use the UI available at https://fakerestapi.azure
 
 ![image](https://github.com/user-attachments/assets/55c366f2-b5fd-4618-a4de-d6edad8647c0)
 
-````
+````java
 String BASE_URL = "https://fakerestapi.azurewebsites.net";
 
 RestAssured.baseURI = BASE_URL;
@@ -68,7 +68,7 @@ Assertions.assertEquals(false, response.jsonPath().getBoolean("completed"));
 
 ![image](https://github.com/user-attachments/assets/0979f177-dcd4-43e4-b0e3-9c580318efd5)
 
-````
+````java
 String BASE_URL = "https://fakerestapi.azurewebsites.net";
 
 RestAssured.baseURI = BASE_URL;
@@ -90,7 +90,7 @@ Assertions.assertEquals(200, response.getStatusCode());
 
 #### 3. Sending POST requests (with Authorization header and JWT token)
 
-````
+````java
 String BASE_URL = "*** URL GOES HERE ***";
 
 RestAssured.baseURI = BASE_URL;
@@ -111,7 +111,7 @@ Assertions.assertEquals(200, response.getStatusCode());
 
 A `*.feature` file needs to be created in the `src/test/resources` directory. The file will contain customer requirements in the english language.
 
-````
+````java
 Feature: API testing of a Fake API
   Swagger URL: https://fakerestapi.azurewebsites.net/index.html
 
@@ -127,7 +127,7 @@ The `Given`, `When` and `Then` steps will be implemented in the step definition 
 
 The scenarios defined in the previous file need to be specified in the corresponding annotations, inside the step definition class. This class will also contain the test logic:
 
-````
+````java
 public class StepDefinitions {
     @Given("A list of activities is available")
     public void aListOfActivitiesIsAvailabie() {
@@ -152,7 +152,7 @@ The step definiton will contain all of the API requests, together with required 
 
 The step definition class is not runnable. Cucumber requires a special annotated class to run the step definitions.
 
-````
+````java
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
