@@ -102,7 +102,14 @@ Response response = requestSpecification
         .body(requestBody.toString())
         .post("/api/v1/Authors");
 
+// Check the status code
 Assertions.assertEquals(200, response.getStatusCode());
+
+// POST also returns the created object, so check for the returned fields to match your object
+Assertions.assertEquals(16, response.jsonPath().getInt("id"));
+Assertions.assertEquals(32, response.jsonPath().getInt("idBook"));
+Assertions.assertEquals("John", response.jsonPath().getString("firstName"));
+Assertions.assertEquals("Doe", response.jsonPath().getString("lastName"));
 ````
 
 #### 4. Sending POST requests (with Authorization header and JWT token)
@@ -119,7 +126,10 @@ Response response = requestSpecification
         .body("BODY GOES HERE")
         .post("URL GOES HERE");
 
+// Check for the status code
 Assertions.assertEquals(200, response.getStatusCode());
+
+// Additionally check for response body fields
 ````
 
 ### Behavior-driven development with Cucumber
