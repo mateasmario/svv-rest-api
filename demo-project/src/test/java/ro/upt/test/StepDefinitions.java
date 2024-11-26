@@ -28,10 +28,6 @@ public class StepDefinitions {
     public void theUserRequestsForAnActivityWithASpecificId() {
         response = requestSpecification
                 .get("/api/v1/Activities/1");
-        Assertions.assertEquals(200, response.getStatusCode());
-        Assertions.assertEquals(1, response.jsonPath().getInt("id"));
-        Assertions.assertEquals("Activity 1", response.jsonPath().getString("title"));
-        Assertions.assertEquals(false, response.jsonPath().getBoolean("completed"));
     }
 
     @Then("The requested activity should be returned")
