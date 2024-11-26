@@ -92,8 +92,8 @@ RestAssured.baseURI = BASE_URL;
 RequestSpecification requestSpecification = RestAssured.given();
 
 JsonObject requestBody = new JsonObject();
-requestBody.add("id", "16");
-requestBody.add("idBook", "32");
+requestBody.add("id", 16);
+requestBody.add("idBook", 32);
 requestBody.add("firstName", "John");
 requestBody.add("lastName", "Doe");
 
