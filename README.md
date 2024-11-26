@@ -91,7 +91,7 @@ Assertions.assertEquals(200, response.getStatusCode());
 #### 3. Sending POST requests (with Authorization header and JWT token)
 
 ````java
-String BASE_URL = "*** URL GOES HERE ***";
+String BASE_URL = "BASE URL GOES HERE";
 
 RestAssured.baseURI = BASE_URL;
 RequestSpecification requestSpecification = RestAssured.given();
@@ -99,8 +99,8 @@ RequestSpecification requestSpecification = RestAssured.given();
 Response response = requestSpecification
         .contentType("application/json")
         .header(new Header("Authorization", "Bearer TOKEN")) // requires a JWT token
-        .body(*** BODY GOES HERE ***)
-        .post(*** URL GOES HERE ***);
+        .body("BODY GOES HERE")
+        .post("URL GOES HERE");
 
 Assertions.assertEquals(200, response.getStatusCode());
 ````
@@ -111,7 +111,7 @@ Assertions.assertEquals(200, response.getStatusCode());
 
 A `*.feature` file needs to be created in the `src/test/resources` directory. The file will contain customer requirements in the english language.
 
-````java
+````gherkin
 Feature: API testing of a Fake API
   Swagger URL: https://fakerestapi.azurewebsites.net/index.html
 
@@ -148,7 +148,7 @@ public class StepDefinitions {
 
 The step definiton will contain all of the API requests, together with required assertions.
 
-### The runner class
+#### The runner class
 
 The step definition class is not runnable. Cucumber requires a special annotated class to run the step definitions.
 
