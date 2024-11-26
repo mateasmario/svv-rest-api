@@ -47,7 +47,7 @@ We also need to add a dependency for the JUnit API, which provides the `Assertio
 
 For the below example, we will use the UI available at https://fakerestapi.azurewebsites.net/index.html.
 
-#### 1. Sending simple GET requests
+#### 1. Sending simple GET requests for one item
 
 ![image](https://github.com/user-attachments/assets/55c366f2-b5fd-4618-a4de-d6edad8647c0)
 
@@ -64,7 +64,24 @@ Assertions.assertEquals("Activity 1", response.jsonPath().getString("title"));
 Assertions.assertEquals(false, response.jsonPath().getBoolean("completed"));
 ````
 
-#### 2. Sending POST requests (with body)
+#### 2. Sending GET requests for multiple items (checking the size of the list)
+
+![image](https://github.com/user-attachments/assets/55d18db9-3b3c-4705-b1f0-0a638ba3c7d1)
+
+````java
+String BASE_URL = "https://fakerestapi.azurewebsites.net";
+
+RestAssured.baseURI = BASE_URL;
+RequestSpecification requestSpecification = RestAssured.given();
+Response response = requestSpecification.get("/api/v1/Activities");
+
+Assertions.assertEquals(200, response.getStatusCode());
+// Take the list returned by the GET request, and check its size (in our case, the API returns a list with 200 elements)
+Assertions.assertEquals(200, response.jsonPath().getList("").size());
+````
+
+
+#### 3. Sending POST requests (with body)
 
 ![image](https://github.com/user-attachments/assets/0979f177-dcd4-43e4-b0e3-9c580318efd5)
 
@@ -88,7 +105,7 @@ Response response = requestSpecification
 Assertions.assertEquals(200, response.getStatusCode());
 ````
 
-#### 3. Sending POST requests (with Authorization header and JWT token)
+#### 4. Sending POST requests (with Authorization header and JWT token)
 
 ````java
 String BASE_URL = "BASE URL GOES HERE";
