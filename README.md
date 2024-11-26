@@ -91,15 +91,15 @@ String BASE_URL = "https://fakerestapi.azurewebsites.net";
 RestAssured.baseURI = BASE_URL;
 RequestSpecification requestSpecification = RestAssured.given();
 
-JsonObject requestParams = new JsonObject();
-requestParams.add("id", "16");
-requestParams.add("idBook", "32");
-requestParams.add("firstName", "John");
-requestParams.add("lastName", "Doe");
+JsonObject requestBody = new JsonObject();
+requestBody.add("id", "16");
+requestBody.add("idBook", "32");
+requestBody.add("firstName", "John");
+requestBody.add("lastName", "Doe");
 
 Response response = requestSpecification
         .contentType("application/json")
-        .body(requestParams.toString())
+        .body(requestBody.toString())
         .post("/api/v1/Authors");
 
 Assertions.assertEquals(200, response.getStatusCode());
