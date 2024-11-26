@@ -15,6 +15,8 @@ public class StepDefinitions {
 
     static {
         RestAssured.baseURI = BASE_URL;
+        // ToDo: Uncomment if you run the tests from the lab environment
+//        RestAssured.proxy("proxy.intranet.cs.upt.ro", 3128);
         requestSpecification = RestAssured.given();
     }
 
