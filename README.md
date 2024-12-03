@@ -47,7 +47,7 @@ We also need to add a dependency for the JUnit API, which provides the `Assertio
 
 For the below example, we will use the UI available at https://fakerestapi.azurewebsites.net/index.html.
 
-#### 1. Sending simple GET requests
+#### 1. Sending simple GET requests for one item
 
 ![image](https://github.com/user-attachments/assets/55c366f2-b5fd-4618-a4de-d6edad8647c0)
 
@@ -64,7 +64,24 @@ Assertions.assertEquals("Activity 1", response.jsonPath().getString("title"));
 Assertions.assertEquals(false, response.jsonPath().getBoolean("completed"));
 ````
 
-#### 2. Sending POST requests (with body)
+#### 2. Sending GET requests for multiple items (checking the size of the list)
+
+![image](https://github.com/user-attachments/assets/55d18db9-3b3c-4705-b1f0-0a638ba3c7d1)
+
+````java
+String BASE_URL = "https://fakerestapi.azurewebsites.net";
+
+RestAssured.baseURI = BASE_URL;
+RequestSpecification requestSpecification = RestAssured.given();
+Response response = requestSpecification.get("/api/v1/Activities");
+
+Assertions.assertEquals(200, response.getStatusCode());
+// Take the list returned by the GET request, and check its size (in our case, the API returns a list with 200 elements)
+Assertions.assertEquals(200, response.jsonPath().getList("").size());
+````
+
+
+#### 3. Sending POST requests (with body)
 
 ![image](https://github.com/user-attachments/assets/0979f177-dcd4-43e4-b0e3-9c580318efd5)
 
@@ -74,21 +91,28 @@ String BASE_URL = "https://fakerestapi.azurewebsites.net";
 RestAssured.baseURI = BASE_URL;
 RequestSpecification requestSpecification = RestAssured.given();
 
-JsonObject requestParams = new JsonObject();
-requestParams.add("id", "16");
-requestParams.add("idBook", "32");
-requestParams.add("firstName", "John");
-requestParams.add("lastName", "Doe");
+JsonObject requestBody = new JsonObject();
+requestBody.add("id", 16);
+requestBody.add("idBook", 32);
+requestBody.add("firstName", "John");
+requestBody.add("lastName", "Doe");
 
 Response response = requestSpecification
         .contentType("application/json")
-        .body(requestParams.toString())
+        .body(requestBody.toString())
         .post("/api/v1/Authors");
 
+// Check the status code
 Assertions.assertEquals(200, response.getStatusCode());
+
+// POST also returns the created object, so check for the returned fields to match your object
+Assertions.assertEquals(16, response.jsonPath().getInt("id"));
+Assertions.assertEquals(32, response.jsonPath().getInt("idBook"));
+Assertions.assertEquals("John", response.jsonPath().getString("firstName"));
+Assertions.assertEquals("Doe", response.jsonPath().getString("lastName"));
 ````
 
-#### 3. Sending POST requests (with Authorization header and JWT token)
+#### 4. Sending POST requests (with Authorization header and JWT token)
 
 ````java
 String BASE_URL = "BASE URL GOES HERE";
@@ -102,7 +126,10 @@ Response response = requestSpecification
         .body("BODY GOES HERE")
         .post("URL GOES HERE");
 
+// Check for the status code
 Assertions.assertEquals(200, response.getStatusCode());
+
+// Additionally check for response body fields
 ````
 
 ### Behavior-driven development with Cucumber
