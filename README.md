@@ -132,6 +132,55 @@ Assertions.assertEquals(200, response.getStatusCode());
 // Additionally check for response body fields
 ````
 
+### Accessing complex data using JSONPath ###
+
+#### 1. Getting values from nested data ####
+
+For data with a similar format:
+````json
+{
+    "data": {
+        "user1": {
+            "username": "john",
+            "email": "johndoe53@gmail.com"
+        }
+    }
+}
+````
+
+Nested data can be accessed like this:
+
+````java
+Assertions.assertEquals("john", response.jsonPath().getString("data.user1.username");
+Assertions.assertEquals("johndoe53@gmail.com", response.jsonPath().getString("data.user1.email");
+````
+
+#### 2. Retrieving properties from array elements ####
+
+For data containing arrays:
+
+````json
+{
+    "books": [
+        {
+            "title": "The Jungle Book",
+            "author": "Rudyard Kipling"
+        },
+        {
+            "title": "Harry Potter and the Philosopher's Stone",
+            "author": "J.K. Rowling"
+        }
+    ]
+}
+````
+
+The properties of the first book can be accessed like this:
+
+````java
+Assertions.assertEquals("The Jungle Book", response.jsonPath().getString("books[0].title");
+Assertions.assertEquals("Rudyard Kipling", response.jsonPath().getString("books[0].author");
+````
+
 ### Behavior-driven development with Cucumber
 
 #### The feature file
