@@ -2,7 +2,7 @@
 
 ### Installing required dependencies
 
-In order to be able to test API endpoints in the BDD style with Java, we will first need to add the required dependencies for the [RestAssured](https://rest-assured.io/) library, including [jackson-databind](https://github.com/FasterXML/jackson-databind) for proper JSON object mapping.
+In order to test API endpoints in the BDD style, we'll first need to add the required dependencies for the [RestAssured](https://rest-assured.io/) library, including [jackson-databind](https://github.com/FasterXML/jackson-databind) for proper JSON object mapping.
 
 ````xml
 <dependency>
