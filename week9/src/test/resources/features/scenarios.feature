@@ -16,7 +16,7 @@ Feature: API testing of a Fake API
     When The user deletes the author with the specific id
     Then The author should be successfully deleted
 
-  Scenario: The user is able to get the entire list of books
-    Given A list of books is available
-    When The user requests for all books
-    Then All books should be returned
+  Scenario: The user is able to update an existing book
+    Given A book with a certain id exists
+    When The user updates the book
+    Then The book should be successfully updated
