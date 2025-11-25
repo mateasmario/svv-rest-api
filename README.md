@@ -119,7 +119,7 @@ We will make use of the Swagger documentation of the provided API, in order to g
 
 #### 1. Sending simple GET requests for one item
 
-![image](https://github.com/user-attachments/assets/55c366f2-b5fd-4618-a4de-d6edad8647c0)
+![image](https://github.com/user-attachments/assets/f851ecf6-9150-4d8b-95f6-4624fe2fe08a)
 
 ````java
 String BASE_URL = "https://fakerestapi.azurewebsites.net";
@@ -181,6 +181,9 @@ Assertions.assertEquals(32, response.jsonPath().getInt("idBook"));
 Assertions.assertEquals("John", response.jsonPath().getString("firstName"));
 Assertions.assertEquals("Doe", response.jsonPath().getString("lastName"));
 ````
+
+> [!NOTE]
+`PUT` requests can be sent similarly by just replacing the final method call. 
 
 #### 4. Sending POST requests (with Authorization header and JWT token)
 
