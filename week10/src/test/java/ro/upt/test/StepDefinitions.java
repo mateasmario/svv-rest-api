@@ -5,7 +5,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 public class StepDefinitions {
-    private static final String BASE_URL = "https://reqres.in/";
+    private static final String BASE_URL = "https://fakestoreapi.com";
     private static final RequestSpecification requestSpecification;
     private static Response response;
 

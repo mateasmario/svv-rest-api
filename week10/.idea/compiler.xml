@@ -7,8 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="week8" />
-        <module name="cucumber" />
         <module name="demo-project" />
+        <module name="untitled" />
+        <module name="cucumber" />
       </profile>
     </annotationProcessing>
   </component>
