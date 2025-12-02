@@ -9,14 +9,14 @@ Feature: API testing of a Fake API
   Scenario: Changing the title of a product works
     Given A product with a certain id exists
     When The title of the product is updated
-    Then A successful response should be returned
+    Then A successful response after the update should be returned
 
   Scenario: A product can be created
     Given A product with a certain id does not exist (get the entire list and assert that its size is less than your id)
     When The product is created
-    Then A successful response should be returned
+    Then A successful response after the creation should be returned
 
   Scenario: A product can be deleted
     Given A product with a certain id already exists
     When The product is deleted
-    Then A successful response should be returned
+    Then A successful response after the deletion should be returned
