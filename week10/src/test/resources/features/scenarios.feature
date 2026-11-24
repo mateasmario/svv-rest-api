@@ -2,7 +2,7 @@ Feature: API testing of a Fake API
   Documentation URL: https://fakestoreapi.com/products
 
   Scenario: A product with a specific id can be retrieved
-    Given A list of products exists in the database
+    Given A product id
     When Retrieving a product by a specific id
     Then The product's information should be returned
 
