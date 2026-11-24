@@ -7,16 +7,16 @@ Feature: API testing of a Fake API
     Then The requested activity should be returned
 
   Scenario: The user successfully adds a new activity
-    Given An activity with an id that does not exist
+    Given An id of an activity that does not exist
     When The user creates a new activity with that id
     Then The activity should be created successfully
 
   Scenario: The user can successfully delete an author
-    Given An author with an id that already exists
+    Given An id of an author that exists
     When The user deletes the author with the specific id
     Then The author should be successfully deleted
 
   Scenario: The user is able to update an existing book
-    Given A book with a certain id exists
+    Given An id of a book that exists
     When The user updates the book
     Then The book should be successfully updated
