@@ -2,17 +2,17 @@ Feature: API testing of a Fake API
   Swagger URL: https://fakerestapi.azurewebsites.net/index.html
 
   Scenario: When user requests for an existing activity id, the activity should be returned
-    Given A list of activities is available
+    Given An activity id
     When The user requests for an activity with a specific id
     Then The requested activity should be returned
 
   Scenario: The user successfully adds a new activity
-    Given An activity id that does not exist
+    Given An activity with an id that does not exist
     When The user creates a new activity with that id
     Then The activity should be created successfully
 
   Scenario: The user can successfully delete an author
-    Given An author id that already exists
+    Given An author with an id that already exists
     When The user deletes the author with the specific id
     Then The author should be successfully deleted
 
