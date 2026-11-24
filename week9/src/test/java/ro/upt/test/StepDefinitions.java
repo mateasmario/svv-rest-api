@@ -12,6 +12,7 @@ public class StepDefinitions {
     private static final String BASE_URL = "https://fakerestapi.azurewebsites.net";
     private static final RequestSpecification requestSpecification;
     private static Response response;
+    private int studentId;
 
     static {
         RestAssured.baseURI = BASE_URL;
@@ -20,16 +21,15 @@ public class StepDefinitions {
         requestSpecification = RestAssured.given();
     }
 
-    @Given("A list of activities is available")
-    public void aListOfActivitiesIsAvailabie() {
-        response = requestSpecification.get("/api/v1/Activities");
-        Assertions.assertEquals(200, response.getStatusCode());
+    @Given("An activity id")
+    public void anActivityId() {
+        studentId = 1;
     }
 
     @When("The user requests for an activity with a specific id")
     public void theUserRequestsForAnActivityWithASpecificId() {
         response = requestSpecification
-                .get("/api/v1/Activities/1");
+                .get("/api/v1/Activities/" + studentId);
     }
 
     @Then("The requested activity should be returned")
